@@ -10,18 +10,26 @@ repositories {
 }
 
 dependencies {
-    compile 'org.slf4j:slf4j-api:1.7.5'
+    compile group: 'org.scala-lang', name: 'scala-library',     version: '2.10.3'
+    compile project(":AccountsClient")
 
     testCompile "junit:junit:4.11"
 }
 
+jar {
+    from "${project(':AccountsClient').buildDir}/classes/main"
+}
+
 task docJar(type: Jar, dependsOn: javadoc) {
     classifier = 'javadoc'
+
     from 'build/docs/javadoc'
 }
 
 task sourceJar(type: Jar) {
     from sourceSets.main.allSource
+    from project(":AccountsClient").sourceSets.main.allSource
+
     classifier = 'sources'
 }
 
@@ -74,6 +82,22 @@ uploadArchives {
                     developer {
                         id 'bowser'
                         name 'Bowser'
+                    }
+
+                    /*
+                     * AccountsClient - Because Mojang can't maven
+                     */
+                    developer {
+                        id 'mollstam'
+                        name 'Tobias Mollstam'
+                    }
+                    developer {
+                        id 'KrisJelbring'
+                        name 'Kris Jelbring'
+                    }
+                    developer {
+                        id 'grum'
+                        name 'Erik Broes'
                     }
                 }
             }
