@@ -1,0 +1,3 @@
+[submodule "AccountsClient"]
+	path = AccountsClient
+	url = https://github.com/Mojang/AccountsClient.git
