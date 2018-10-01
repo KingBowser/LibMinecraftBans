@@ -1,6 +1,7 @@
 package pw.bowser.minebans
 
 import java.util.Date
+import java.util.UUID
 
 /**
  * Ban model.
@@ -16,8 +17,8 @@ import java.util.Date
  *
  * @author Bowser
  */
-case class Ban(identifier:  String,
-               userId:      String,
+case class Ban(identifier:  UUID,
+               userId:      UUID,
                banReason:   String,
                banDate:     Date,
-               creator:     String)
+               creator:     UUID)
